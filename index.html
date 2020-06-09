@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListCheckOff'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style> body { font-size: 1.4em; }</style>
+    <title>Check off</title>
+  </head>
+  <body>
+    <h2>To Buy : </h2>
+    <div ng-controller='ToBuyController as toBuy'>
+        <div ng-if="toBuy.toBuyItems.length==0">Everything is bought!</div>
+        <ol>
+            <li ng-repeat="item in toBuy.toBuyItems">
+              Buy {{ item.quantity }} {{ item.name }}
+              <button ng-click="toBuy.removeItem($index);">Bought</button>
+            </li>
+          </ol>
+    </div>
+    <h2>Already Bought : </h2>
+    <div ng-controller='AlreadyBoughtController as bought'>
+        <div ng-if="bought.boughtItems.length==0">Nothing bought yet</div>
+        <ol>
+            <li ng-repeat="item1 in bought.boughtItems">
+              Bought {{ item1.quantity }} {{ item1.name }}
+            </li>
+        </ol>
+    </div>
+  </body>
+</html>
